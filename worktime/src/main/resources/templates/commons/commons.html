@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<!--头部导航栏-->
+<header id="header" class="header" th:fragment="topbar">
+
+  <div class="header-menu">
+
+    <div class="col-sm-7">
+    </div>
+
+    <div class="col-sm-5">
+      <div class="user-area dropdown float-right">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img class="user-avatar rounded-circle" th:src="@{/images/admin.jpg}" alt="User Avatar">
+        </a>
+
+        <div class="user-menu dropdown-menu">
+          <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
+
+          <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
+
+          <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
+
+          <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+        </div>
+      </div>
+
+      <div class="language-select dropdown" id="language-select">
+        <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
+          <i class="flag-icon flag-icon-cn"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="language">
+          <div class="dropdown-item">
+            <span class="flag-icon flag-icon-fr"></span>
+          </div>
+          <div class="dropdown-item">
+            <i class="flag-icon flag-icon-es"></i>
+          </div>
+          <div class="dropdown-item">
+            <i class="flag-icon flag-icon-us"></i>
+          </div>
+          <div class="dropdown-item">
+            <i class="flag-icon flag-icon-it"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</header><!-- /header -->
+
+<!--侧边栏-->
+
+<aside id="left-panel" class="left-panel" th:fragment="sidebar">
+  <nav class="navbar navbar-expand-sm navbar-default">
+
+    <div class="navbar-header">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars"></i>
+      </button>
+      <a class="navbar-brand hidden" href="./">注 销</a>
+      <a class="navbar-brand" th:href="@{/user/logout}">账号：[[${session.loginUser}]]</a>
+    </div>
+
+    <div id="main-menu" class="main-menu collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li th:class="${active=='main.html'?'active':''}">
+          <a th:href="@{/index}"> <i class="menu-icon fa fa-dashboard"></i>首 页 </a>
+        </li>
+
+        <h3 class="menu-title">账号管理</h3><!-- /.menu-title -->
+        <li th:class="${active=='employeeList.html'?'active':''}">
+          <a th:href="@{/empList}"> <i class="menu-icon ti-user"></i>账号管理 </a>
+        </li>
+
+        <h3 class="menu-title">数据管理</h3><!-- /.menu-title -->
+        <li th:class="${active=='datatable'?'menu-item-has-children dropdown show':'menu-item-has-children dropdown'}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" th:aria-expanded="${active=='datatable'?true:false}"><i th:class="${active=='datatable'?'menu-icon fa fa-laptop active':'menu-icon fa fa-laptop'}"></i>数据管理</a>
+          <ul th:class="${active=='datatable'?'sub-menu children dropdown-menu show':'sub-menu children dropdown-menu'}">
+            <li><i class="fa fa-puzzle-piece"></i><a th:href="@{/dataTable(number=1)}">1</a></li>
+            <li><i class="fa fa-id-badge"></i><a th:href="@{/dataTable(number=2)}">2</a></li>
+            <li><i class="fa fa-bars"></i><a th:href="@{/dataTable(number=3)}">3</a></li>
+            <li><i class="fa fa-share-square-o"></i><a th:href="@{/dataTable(number=4)}">4</a></li>
+            <li><i class="fa fa-id-card-o"></i><a th:href="@{/dataTable(number=5)}">5</a></li>
+            <li><i class="fa fa-exclamation-triangle"></i><a th:href="@{/dataTable(number=6)}">6</a></li>
+            <li><i class="fa fa-spinner"></i><a th:href="@{/dataTable(number=7)}">7</a></li>
+            <li><i class="fa fa-fire"></i><a th:href="@{/dataTable(number=8)}">8</a></li>
+            <li><i class="fa fa-book"></i><a th:href="@{/dataTable(number=9)}">9</a></li>
+            <li><i class="fa fa-th"></i><a th:href="@{/dataTable(number=10)}">10</a></li>
+            <li><i class="fa fa-file-word-o"></i><a th:href="@{/dataTable(number=11)}">11</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+</aside><!-- /#left-panel -->
+
+
+</html>
